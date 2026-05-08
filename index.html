@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>강현아 포트폴리오 | 서비스 기획자 PM·PO</title>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+    :root {
+      --blue: #3B6FE8;
+      --blue-dark: #2A52B0;
+      --blue-light: #EEF3FD;
+      --gray-dark: #1A1A2E;
+      --gray-mid: #4A4A6A;
+      --gray-light: #9090A8;
+      --bg: #F5F6FA;
+      --white: #FFFFFF;
+      --purple-light: #EEEAF8;
+      --card-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Pretendard', sans-serif;
+      background: var(--bg);
+      color: var(--gray-dark);
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #eee;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 60px;
+    }
+    .nav-logo { font-weight: 700; font-size: 1.1rem; color: var(--blue); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--gray-mid); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--blue); }
+
+    /* SECTIONS */
+    section { padding: 100px 5%; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .section-label {
+      display: inline-block;
+      background: var(--blue);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+    h2.section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .section-sub {
+      color: var(--gray-light);
+      font-size: 0.95rem;
+      margin-bottom: 3rem;
+    }
+
+    /* HERO */
+    #hero {
+      background: linear-gradient(135deg, #2A52B0 0%, #3B6FE8 60%, #5B8CF0 100%);
+      color: white;
+      min-height: 120vh;
+      display: flex;
+      align-items: center;
+      padding-top: 60px;
+      padding-bottom: 80px;
+    }
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      font-size: 0.85rem;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+    #hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+    #hero h1 span { opacity: 0.7; font-weight: 400; font-size: 0.55em; display: block; margin-bottom: 0.3em; }
+    .hero-desc {
+      font-size: 1.05rem;
+      line-height: 2.2;
+      opacity: 0.9;
+      max-width: 900px;
+      margin-bottom: 2.5rem;
+      white-space: nowrap;
+    }
+    @media (max-width: 960px) {
+      .hero-desc { white-space: normal; }
+    }
+    .hero-desc strong { border-bottom: 2px solid rgba(255,255,255,0.6); }
+    .hero-contacts {
+      display: flex; gap: 1.5rem; flex-wrap: wrap;
+      font-size: 0.9rem; opacity: 0.8;
+    }
+    .hero-contacts span::before { margin-right: 6px; opacity: 0.7; }
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 3.5rem;
+      flex-wrap: wrap;
+    }
+    .stat { border-left: 3px solid rgba(255,255,255,0.4); padding-left: 1.2rem; }
+    .stat-num { font-size: 2rem; font-weight: 900; }
+    .stat-label { font-size: 0.8rem; opacity: 0.7; }
+
+    /* ABOUT */
+    #about { background: white; }
+    .about-headline {
+      font-size: clamp(1.6rem, 4vw, 2.8rem);
+      font-weight: 900;
+      margin-bottom: 3rem;
+      line-height: 1.3;
+    }
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    .pillar {
+      background: var(--blue-light);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .pillar-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+    .pillar-title { font-weight: 700; font-size: 1rem; color: var(--blue); margin-bottom: 0.4rem; }
+    .pillar-desc { font-size: 0.85rem; color: var(--gray-mid); }
+
+    /* HOW I WORK */
+    #how { background: var(--bg); }
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .how-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.2s;
+    }
+    .how-card:hover { transform: translateY(-4px); }
+    .how-num {
+      font-size: 2.5rem; font-weight: 900;
+      color: var(--blue); opacity: 0.15;
+      line-height: 1; margin-bottom: 0.5rem;
+    }
+    .how-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .how-desc { font-size: 0.85rem; color: var(--gray-mid); }
+
+    /* PROJECTS */
+    #projects { background: white; }
+    .project-card {
+      border: 1.5px solid #eee;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      transition: box-shadow 0.2s;
+    }
+    .project-card:hover { box-shadow: var(--card-shadow); }
+    .project-header {
+      background: var(--blue);
+      color: white;
+      padding: 2rem 2.5rem;
+      display: flex; align-items: flex-start; gap: 1.5rem;
+    }
+    .project-num-badge {
+      background: rgba(255,255,255,0.2);
+      border-radius: 8px;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      white-space: nowrap;
+      margin-top: 4px;
+    }
+    .project-header-text h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .project-header-text p { font-size: 0.85rem; opacity: 0.8; }
+    .project-body {
+      padding: 2rem 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 720px) {
+      .project-body { grid-template-columns: 1fr; }
+    }
+    .pblock-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--blue);
+      margin-bottom: 0.8rem;
+    }
+    .pblock p { font-size: 0.88rem; color: var(--gray-mid); margin-bottom: 0.4rem; }
+    .pblock ul { padding-left: 1.1rem; }
+    .pblock ul li { font-size: 0.88rem; color: var(--gray-mid); margin-bottom: 0.4rem; }
+    .result-item {
+      background: var(--purple-light);
+      border-radius: 10px;
+      padding: 0.8rem 1rem;
+      margin-bottom: 0.6rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #4a3a8a;
+    }
+    .result-item.blue-bg {
+      background: var(--blue-light);
+      color: var(--blue-dark);
+    }
+
+    /* SKILLS */
+    #skills { background: var(--bg); }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-group {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+    }
+    .skill-group-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--blue);
+      margin-bottom: 1rem;
+    }
+    .skill-tag {
+      display: inline-block;
+      background: var(--blue-light);
+      color: var(--blue-dark);
+      border-radius: 8px;
+      padding: 4px 10px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      margin: 3px;
+    }
+
+    /* EXPERIENCE */
+    #experience { background: white; }
+    .exp-card {
+      border-left: 3px solid var(--blue);
+      padding-left: 2rem;
+      margin-bottom: 2rem;
+    }
+    .exp-period { font-size: 0.82rem; color: var(--gray-light); margin-bottom: 0.3rem; }
+    .exp-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .exp-sub { font-size: 0.9rem; color: var(--gray-mid); margin-bottom: 0.8rem; }
+    .exp-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .exp-tag {
+      background: var(--blue-light);
+      color: var(--blue-dark);
+      border-radius: 6px;
+      padding: 3px 10px;
+      font-size: 0.8rem;
+    }
+
+    /* EDUCATION & CERTS */
+    #education { background: var(--bg); }
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 640px) { .edu-grid { grid-template-columns: 1fr; } }
+    .edu-block h3 { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; color: var(--blue); }
+    .edu-item, .cert-item {
+      background: white;
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 0.8rem;
+      box-shadow: var(--card-shadow);
+    }
+    .edu-item-title { font-weight: 700; font-size: 0.95rem; }
+    .edu-item-sub { font-size: 0.82rem; color: var(--gray-light); margin-top: 2px; }
+
+    /* CONTACT */
+    #contact {
+      background: var(--blue);
+      color: white;
+      text-align: center;
+    }
+    #contact h2 { font-size: 2rem; font-weight: 900; margin-bottom: 1rem; }
+    #contact p { opacity: 0.85; margin-bottom: 2.5rem; }
+    .contact-links {
+      display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
+    }
+    .contact-btn {
+      background: rgba(255,255,255,0.15);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      color: white;
+      border-radius: 12px;
+      padding: 0.9rem 2rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .contact-btn:hover { background: rgba(255,255,255,0.25); }
+    .contact-btn.solid { background: white; color: var(--blue); border-color: white; }
+    .contact-btn.solid:hover { background: var(--blue-light); }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      color: var(--gray-light);
+      background: #111;
+      color: #666;
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 80px 6%; }
+      nav { padding: 0 6%; }
+      .nav-links { gap: 1.2rem; }
+      .hero-stats { gap: 1.5rem; }
+      .project-header { flex-direction: column; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">기획자 강현아</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">경력</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">서비스 기획자 / PM·PO</div>
+    <h1>
+      <span>문제를 보면 끝까지 해결합니다.</span>
+      강현아
+    </h1>
+    <div class="hero-desc">
+      <p>운영 문제를 구조화하고, 시스템과 자동화를 통해 해결한 서비스 기획자입니다.</p>
+      <p>정산·운영 프로세스 전반을 분석하고 병목을 정의하여, RPA 및 시스템 도입으로 업무 효율을 개선했습니다.</p>
+      <p>전사 자동화 21건을 주도하며 연간 약 1,200시간 절감, 정산 프로세스 리드타임 70% 단축을 달성했습니다.</p>
+    </div>
+    <div class="hero-contacts">
+      <span>📞 010-7760-5340</span>
+      <span>✉️ hyunah320@naver.com</span>
+      <span>📍 서울시 용산구</span>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">1,200h</div>
+        <div class="stat-label">연간 업무 절감</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">21건</div>
+        <div class="stat-label">자동화 주도</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">70%</div>
+        <div class="stat-label">리드타임 단축</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2년 2개월</div>
+        <div class="stat-label">경력</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">About</div>
+    <p class="about-headline">구조부터 생각합니다.</p>
+    <p class="section-sub">데이터를 통해 운영 비효율을 발견하고 사용자 인터뷰부터 프로세스 구성 및 시스템 설계, UTA, 실행과 개선까지 직접 주도합니다.</p>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-icon">🤖</div>
+        <div class="pillar-title">데이터 기반 AI 활용</div>
+        <div class="pillar-desc">LLM 프롬프트 설계, OCR/NLP 파이프라인 기획</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🔍</div>
+        <div class="pillar-title">문제 정의 · 구조화</div>
+        <div class="pillar-desc">복잡한 운영 프로세스를 분석하고 병목 구간을 구조적으로 도출</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">💬</div>
+        <div class="pillar-title">커뮤니케이션</div>
+        <div class="pillar-desc">현업-개발 간 요구사항 조율 및 실행 중심 협업</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">⚡</div>
+        <div class="pillar-title">실행력</div>
+        <div class="pillar-desc">RPA UAT 조율, LLM 프롬프트 설계, 대시보드 구축까지 직접 실행</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW I WORK -->
+<section id="how">
+  <div class="container">
+    <div class="section-label">How I Work</div>
+    <h2 class="section-title">일하는 방식</h2>
+    <p class="section-sub">기획자로서 저만의 4가지 원칙입니다.</p>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-num">01</div>
+        <div class="how-title">끝까지 실행합니다.</div>
+        <div class="how-desc">RPA UAT 조율, LLM 프롬프트 설계, 대시보드 구축까지 직접 실행했습니다.</div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">02</div>
+        <div class="how-title">현업 언어를 기능으로 연결합니다.</div>
+        <div class="how-desc">4개 부서 인터뷰로 Pain Point를 수집하고, 요구사항을 기능 명세로 전환합니다.</div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">03</div>
+        <div class="how-title">작게 출시하고 빠르게 개선합니다.</div>
+        <div class="how-desc">MVP → 피드백 → 개선 반복으로 어드민 5개 영역을 단계적으로 확장했습니다.</div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">04</div>
+        <div class="how-title">문제를 숫자로 정의합니다.</div>
+        <div class="how-desc">감이 아닌 시간·비용·오류율로 판단합니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">Projects</div>
+    <h2 class="section-title">주요 프로젝트</h2>
+    <p class="section-sub">에이치에너지 PI팀에서 주도한 3가지 핵심 프로젝트입니다.</p>
+
+    <!-- Project 1 -->
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-num-badge">PROJECT 1</div>
+        <div class="project-header-text">
+          <h3>AI 문서관리시스템 구축</h3>
+          <p>수행기간 2025.06 ~ 2025.10 · 역할: 문서관리 프로세스 기획 / LLM 프롬프트 설계</p>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="pblock">
+          <div class="pblock-title">문제 정의</div>
+          <p>발전소 수 증가로 문서가 급증했으나 구글 드라이브 내 분류 체계 없이 저장되어 최신 문서 식별이 어렵고, 중복 파일 증가 및 공정 일정 지연 발생.</p>
+          <br>
+          <p><strong>가설:</strong> AI가 문서를 자동 분류·태깅하면, 담당자의 수동 관리 없이도 최신 문서를 즉시 파악할 수 있다.</p>
+        </div>
+        <div class="pblock">
+          <div class="pblock-title">실행</div>
+          <ul>
+            <li>발전소 공정 단계별 문서 유형 분류 기준 설계</li>
+            <li>OCR 기반 텍스트 추출 구조 기획</li>
+            <li>LLM 프롬프트 규칙 설계</li>
+            <li>Google Drive + 내부 어드민 [업로드→검증→승인→DB 입력] 워크플로우 기획</li>
+          </ul>
+        </div>
+        <div class="pblock">
+          <div class="pblock-title">성과</div>
+          <div class="result-item">📉 문서 검수 시간 70% 절감</div>
+          <div class="result-item">📋 발전소별 문서 관리 체계 표준화</div>
+          <div class="result-item blue-bg">🏆 사내 최초 AI 기반 서비스 기획 사례 → AI 솔루션 내재화 레퍼런스 수립</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-num-badge">PROJECT 2</div>
+        <div class="project-header-text">
+          <h3>발전소 운영 어드민 서비스 기획</h3>
+          <p>수행기간 2023.09 ~ 2025.10 · 역할: 유저 인터뷰 / IA 설계 / Wireframe / MVP 사이클 주도</p>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="pblock">
+          <div class="pblock-title">문제 정의</div>
+          <p>기존 어드민은 발전소·조합 관리 중심으로만 구성되어 영업·리스크·정산 업무는 수기 처리. 사용자 관점이 전혀 고려되지 않은 UI로 비효율이 누적.</p>
+          <br>
+          <div class="pblock-title" style="margin-top:0.8rem;">Case 1. 전자계약 도입</div>
+          <p>계약서 수령 기간 3일 → 3시간 · 전자계약 비중 90% 확대</p>
+          <br>
+          <div class="pblock-title">Case 2. 리스크 검토 자동화</div>
+          <p>NICE·쿠콘 API 연동 → 리스크 검토 시간 10건 기준 1시간 → 5분 단축</p>
+        </div>
+        <div class="pblock">
+          <div class="pblock-title">실행</div>
+          <ul>
+            <li>영업·구축·운영·정산 4개 부서 인터뷰 → Pain Point 도출</li>
+            <li>IA 재설계: 2개 영역 → 5개 영역으로 확장</li>
+            <li>이폼싸인 API 연동 기획</li>
+            <li>NICE 신용평가 API·등기부등본 API 연동 스펙 정의</li>
+            <li>우선순위 기반 MVP 도입 → 피드백 → 개선 사이클 주도</li>
+          </ul>
+        </div>
+        <div class="pblock">
+          <div class="pblock-title">성과</div>
+          <div class="result-item">⚡ 리스크 검토 1시간 → 5분</div>
+          <div class="result-item">📝 전자계약 비중 90% 확대</div>
+          <div class="result-item">⏱ 계약서 수령 3일 → 3시간</div>
+          <div class="result-item blue-bg">🔧 세금계산서 미발행률 0% 달성</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-num-badge">PROJECT 3</div>
+        <div class="project-header-text">
+          <h3>RPA 구축 및 내재화</h3>
+          <p>수행기간 2024.03 ~ 2025.10 · 역할: 자동화 우선순위 선정 / 프로세스 설계·검증 / UAT 조율</p>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="pblock">
+          <div class="pblock-title">문제 정의</div>
+          <p>발전소 수 증가에 따라 각 부서의 수기 반복업무가 비례적으로 늘어남. 인력 충원보다 자동화를 통한 비용 절감이 필요한 상황.</p>
+          <br>
+          <p><strong>우선순위 기준:</strong><br>
+          1순위: 매출에 직접 영향을 주는 업무<br>
+          2순위: 지자체 등 외부 일정에 영향받는 업무<br>
+          3순위: 내부 이해관계자가 많이 엮인 업무</p>
+        </div>
+        <div class="pblock">
+          <div class="pblock-title">실행</div>
+          <ul>
+            <li>현업 인터뷰 → 자동화 가능 업무 파악</li>
+            <li>총 34개 태스크 중 21개 담당, 프로세스 설계·검증</li>
+            <li>개발팀과 UAT 조율 → 현업자 피드백 반영 후 재검증</li>
+            <li>한국전력 청구 이메일 1,400여건 파싱 자동화</li>
+            <li>REC 발급 및 세금계산서 발행 자동화 (발전소 1,300여개)</li>
+          </ul>
+        </div>
+        <div class="pblock">
+          <div class="pblock-title">성과</div>
+          <div class="result-item" style="font-size:1.1rem; background:#dff0e8; color:#1a6640;">⏳ 연간 1,200시간 절감</div>
+          <div class="result-item">📈 발전소 운영 자동화율 75%</div>
+          <div class="result-item">📧 청구서 파싱: 2일 → 4시간</div>
+          <div class="result-item blue-bg">📋 REC 발행: 5일 → 8시간</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">Skills</div>
+    <h2 class="section-title">보유 역량</h2>
+    <p class="section-sub">기획부터 데이터, 자동화, AI까지 end-to-end로 다룹니다.</p>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title">기획 · 협업 툴</div>
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">Notion</span>
+        <span class="skill-tag">Google Workspace</span>
+        <span class="skill-tag">Miro</span>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Data</div>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Excel</span>
+        <span class="skill-tag">Google Sheets</span>
+        <span class="skill-tag">Python (기초)</span>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Automation</div>
+        <span class="skill-tag">Automation360</span>
+        <span class="skill-tag">Zapier</span>
+        <span class="skill-tag">RPA 프로세스 설계</span>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">AI</div>
+        <span class="skill-tag">LLM 프롬프트 설계</span>
+        <span class="skill-tag">OCR 파이프라인</span>
+        <span class="skill-tag">NLP 기획</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label">Experience</div>
+    <h2 class="section-title">경력</h2>
+    <p class="section-sub">총 2년 2개월의 서비스 기획 경력</p>
+    <div class="exp-card">
+      <div class="exp-period">2023.09 ~ 2025.10 · 2년 2개월</div>
+      <div class="exp-title">에이치에너지 PI팀 · 매니저</div>
+      <div class="exp-sub">2025년 매출액 956억 / 영업이익 51억 규모 에너지 기업<br>
+        AI 문서관리시스템 · 발전소 운영 어드민 · RPA 구축 및 내재화 주도</div>
+      <div class="exp-tags">
+        <span class="exp-tag">서비스 기획</span>
+        <span class="exp-tag">RPA</span>
+        <span class="exp-tag">AI 기획</span>
+        <span class="exp-tag">IA 설계</span>
+        <span class="exp-tag">API 연동 기획</span>
+        <span class="exp-tag">UAT 조율</span>
+      </div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-period">2023.01 ~ 2023.02</div>
+      <div class="exp-title">삼정KPMG 회계법인 · 인턴</div>
+      <div class="exp-sub">회계감사 보조 업무 수행 (재무제표 검토, 감사조서 작성 보조)</div>
+      <div class="exp-tags">
+        <span class="exp-tag">회계감사</span>
+        <span class="exp-tag">재무제표 검토</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION & CERTS -->
+<section id="education">
+  <div class="container">
+    <div class="section-label">Education & Certifications</div>
+    <h2 class="section-title">학력 및 자격증</h2>
+    <p class="section-sub">&nbsp;</p>
+    <div class="edu-grid">
+      <div class="edu-block">
+        <h3>학력</h3>
+        <div class="edu-item">
+          <div class="edu-item-title">숙명여자대학교 경영학부</div>
+          <div class="edu-item-sub">2016.03 ~ 2022.08 · 학점 3.94 / 4.5</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-item-title">교환학생 · 리투아니아 빌뉴스 대학교</div>
+          <div class="edu-item-sub">2018.08 ~ 2019.01 · 13개국 여행, 다국적 팀 프로젝트</div>
+        </div>
+      </div>
+      <div class="edu-block">
+        <h3>자격증 · 어학</h3>
+        <div class="cert-item">
+          <div class="edu-item-title">OPIC IH</div>
+          <div class="edu-item-sub">2026.03 취득 · ACTFL</div>
+        </div>
+        <div class="cert-item">
+          <div class="edu-item-title">SQL 개발자 (SQLD)</div>
+          <div class="edu-item-sub">2024.12 취득 · 한국데이터산업진흥원</div>
+        </div>
+        <div class="cert-item">
+          <div class="edu-item-title">컴퓨터활용능력 2급</div>
+          <div class="edu-item-sub">2022.04 취득 · 대한상공회의소</div>
+        </div>
+        <div class="cert-item">
+          <div class="edu-item-title">재경관리사</div>
+          <div class="edu-item-sub">2022.06 취득 · 삼일회계법인</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <h2>함께 일해요</h2>
+    <p>AI 제품 기획, 운영 자동화, 서비스 기획에 관심 있는 팀이라면<br>언제든지 연락 주세요.</p>
+    <div class="contact-links">
+      <a class="contact-btn solid" href="mailto:hyunah320@naver.com">✉️ hyunah320@naver.com</a>
+      <a class="contact-btn" href="tel:01077605340">📞 010-7760-5340</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 강현아 · 서비스 기획자 / PM·PO
+</footer>
+
+</body>
+</html>
