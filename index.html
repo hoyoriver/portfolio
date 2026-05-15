@@ -586,9 +586,19 @@
     <div class="project-card">
       <div class="project-header" style="background: #2a7a5a;">
         <div class="project-num-badge">SIDE PROJECT</div>
-        <div class="project-header-text">
+        <div class="project-header-text" style="flex:1;">
           <h3>bookswap — 교환독서 모임 관리 플랫폼</h3>
-          <p>수행기간 2026.05 · 역할: 서비스 기획 / UI 디자인 / 프론트엔드 개발 / 배포 (1인 풀사이클) · <a href="https://bookswap-rose.vercel.app" target="_blank" style="color:rgba(255,255,255,0.8);text-decoration:underline;">서비스 바로가기 →</a></p>
+          <p style="margin-bottom:16px;">수행기간 2026.05 · 역할: 서비스 기획 / UI 디자인 / 프론트엔드 개발 / 배포 (1인 풀사이클)</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a href="https://bookswap-rose.vercel.app" target="_blank"
+               style="display:inline-flex;align-items:center;gap:6px;background:#fff;color:#2a7a5a;font-weight:700;font-size:0.85rem;padding:8px 18px;border-radius:8px;text-decoration:none;">
+              🚀 서비스 바로가기
+            </a>
+            <a href="https://bookswap-rose.vercel.app/deck.html" target="_blank"
+               style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);color:#fff;font-weight:600;font-size:0.85rem;padding:8px 18px;border-radius:8px;text-decoration:none;border:1px solid rgba(255,255,255,0.3);">
+              📊 프레젠테이션 보기
+            </a>
+          </div>
         </div>
       </div>
       <div class="project-body">
@@ -624,6 +634,25 @@
           <div class="result-item" style="background:#d4ede3;color:#1a5c3a;">⚡ 기획 → 배포 2주 이내 완성</div>
           <div class="result-item" style="background:#d4ede3;color:#1a5c3a;">🔄 교환 순환 자동화 → 운영 알림 메시지 0건</div>
           <div class="result-item" style="background:#c8e6d8;color:#1a5c3a;">🛠 기획·디자인·개발·배포 풀사이클 1인 완수</div>
+        </div>
+      </div>
+      <!-- 덱 프리뷰 -->
+      <div style="padding: 0 2.5rem 2rem; border-top: 1px solid #eee;">
+        <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#2a7a5a;padding-top:1.5rem;margin-bottom:1rem;">Product Deck Preview</div>
+        <div style="position:relative;border-radius:14px;overflow:hidden;border:1px solid #e0e0e0;background:#1a1a1a;cursor:pointer;"
+             onclick="document.getElementById('bs-deck-overlay').style.display='none'; document.getElementById('bs-deck-iframe').style.pointerEvents='all';">
+          <iframe id="bs-deck-iframe"
+            src="https://bookswap-rose.vercel.app/deck.html"
+            style="width:100%;height:420px;border:none;display:block;pointer-events:none;"
+            loading="lazy"
+            title="bookswap product deck">
+          </iframe>
+          <div id="bs-deck-overlay"
+               style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,0.45);gap:12px;">
+            <div style="font-size:2rem;">▶</div>
+            <div style="background:#fff;color:#1a1a1a;font-weight:700;font-size:0.9rem;padding:10px 24px;border-radius:8px;">클릭해서 프레젠테이션 보기</div>
+            <div style="color:rgba(255,255,255,0.6);font-size:0.78rem;">← → 키 또는 버튼으로 슬라이드 이동 · 총 11장</div>
+          </div>
         </div>
       </div>
     </div>
