@@ -467,7 +467,7 @@
   <div class="container">
     <div class="section-label">Projects</div>
     <h2 class="section-title">주요 프로젝트</h2>
-    <p class="section-sub">에이치에너지 PI팀에서 주도한 3가지 핵심 프로젝트입니다.</p>
+    <p class="section-sub">에이치에너지 PI팀에서 주도한 3가지 업무 프로젝트와 1가지 사이드 프로젝트입니다.</p>
 
     <!-- Project 1 -->
     <div class="project-card">
@@ -581,6 +581,53 @@
         </div>
       </div>
     </div>
+
+    <!-- Project 4 (Side Project) -->
+    <div class="project-card">
+      <div class="project-header" style="background: #2a7a5a;">
+        <div class="project-num-badge">SIDE PROJECT</div>
+        <div class="project-header-text">
+          <h3>bookswap — 교환독서 모임 관리 플랫폼</h3>
+          <p>수행기간 2026.05 · 역할: 서비스 기획 / UI 디자인 / 프론트엔드 개발 / 배포 (1인 풀사이클) · <a href="https://bookswap-rose.vercel.app" target="_blank" style="color:rgba(255,255,255,0.8);text-decoration:underline;">서비스 바로가기 →</a></p>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="pblock">
+          <div class="pblock-title">문제 정의</div>
+          <p>직접 교환독서 모임을 운영하면서 느낀 반복적인 불편함에서 출발.</p>
+          <br>
+          <p>• 카카오톡으로 교환 현황 구두 공유</p>
+          <p>• 반납일을 기억에만 의존</p>
+          <p>• 책 제목 직접 타이핑</p>
+          <p>• 교환 이력 기록 없음</p>
+          <p>• 책 감상 나눌 공간 없음</p>
+          <br>
+          <p><strong>가설:</strong> 교환 순환과 이력을 자동화하면, 모임 운영 부담 없이 독서에만 집중할 수 있다.</p>
+        </div>
+        <div class="pblock">
+          <div class="pblock-title">실행</div>
+          <ul>
+            <li>직접 겪은 Pain Point 기반 기능 우선순위 정의</li>
+            <li>IA 설계: 홈 / 모임 / 내 기록 / 통계 / 마이페이지</li>
+            <li>Vanilla JS + Supabase(PostgreSQL) 단일 파일 SPA 구현</li>
+            <li>네이버 책 검색 API 연동 (Vercel Serverless 프록시)</li>
+            <li>교환 주기 기반 D-day 자동 계산 + 배너 알림</li>
+            <li>멤버 배열 circular shift로 순환 자동화</li>
+            <li>생성자 전용 모임 설정 (멤버 관리 / 정보 수정 / 모임 종료)</li>
+            <li>고유 코드 기반 타기기 복원 기능</li>
+            <li>PWA 설정으로 모바일 앱처럼 설치 가능</li>
+          </ul>
+        </div>
+        <div class="pblock">
+          <div class="pblock-title">성과</div>
+          <div class="result-item" style="background:#d4ede3;color:#1a5c3a;">📚 실사용 모임 4개 운영 중 · 멤버 17명</div>
+          <div class="result-item" style="background:#d4ede3;color:#1a5c3a;">⚡ 기획 → 배포 2주 이내 완성</div>
+          <div class="result-item" style="background:#d4ede3;color:#1a5c3a;">🔄 교환 순환 자동화 → 운영 알림 메시지 0건</div>
+          <div class="result-item" style="background:#c8e6d8;color:#1a5c3a;">🛠 기획·디자인·개발·배포 풀사이클 1인 완수</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
